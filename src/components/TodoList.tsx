@@ -1,3 +1,4 @@
+import type { Todo } from "../types/todo";
 import TodoItem from "./Todoitem";
 
 interface TodoListProps {
@@ -18,6 +19,7 @@ onDelete,
         return a.completed ? 1 : -1
     });
     return (
+        <>
         <div className="space-y-2">
         {todosSorted.map((todo) => (
           <TodoItem
@@ -27,7 +29,12 @@ onDelete,
            onDelete={onDelete}
            />
         ))}
-
+       {todos.length === 0 && (
+        <p className="text-center text-sm text-gray-500">
+            No todos yet. Add a new one above.
+        </p>
+       )}
       </div>
+     </>
     );
 }
